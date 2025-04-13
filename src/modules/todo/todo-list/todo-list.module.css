@@ -1,0 +1,22 @@
+.todoContainer {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  background-color: var(--bg-color);
+}
+
+.todoTitle {
+  font-size: 30px;
+  text-align: center;
+  background-color: var(--primary-color);
+  margin: 0 10%;
+  margin-top: 40px;
+  padding: 10px;
+  color: var(--secondary-text-color);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}

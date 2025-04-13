@@ -1,0 +1,79 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid var(--tetriary-color);
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+  padding: 20px;
+  border-radius: 20px 40px;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.iconsContaier {
+  display: flex;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+.changeBtn {
+  width: 25px;
+  height: 25px;
+}
+
+.cardTitleInput {
+  font-size: 30px;
+  font-weight: bold;
+  background-color: var(--secondary-text-color);
+  color: var(--text-color);
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.cardDescriptionInput {
+  background-color: var(--secondary-text-color);
+  color: var(--text-color);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.saveBtn {
+  background-color: var(--primary-color);
+  padding: 5px;
+  width: 200px;
+  border-radius: 5px 15px;
+  margin: 0 auto;
+  border: 2px solid var(--secondary-text-color);
+}
+
+.statusContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.statusBtn {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid var(--secondary-text-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success {
+  background-color: var(--secondary-text-color);
+  color: var(--primary-color);
+}

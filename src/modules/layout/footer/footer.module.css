@@ -1,0 +1,6 @@
+.footerContainer {
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
+  text-align: center;
+  padding: 20px 0;
+}
