@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import "./App.css"
 import { Header } from "./modules/layout/header"
 import { Footer } from "./modules/layout/footer"
@@ -29,22 +29,6 @@ function App() {
     }
   }, [])
 
-  const navigate = useNavigate()
-  const location = useLocation()
-
-  useEffect(() => {
-    if (!localStorage.getItem("user")) {
-      const protectedRoutes = ["/", "/settings", "/profile"]
-      const tryingToAccessProtected = protectedRoutes.includes(
-        location.pathname
-      )
-
-      if (!isLogined && tryingToAccessProtected) {
-        navigate("/login", { replace: true })
-      }
-    }
-  }, [isLogined, location.pathname, navigate])
-
   function handleSettingsChange(title: string, text: string) {
     setTodoTitle(title)
     setFooterText(text)
@@ -66,7 +50,6 @@ function App() {
         setIsLogined(true)
         setUser(user)
         localStorage.setItem("user", JSON.stringify(user))
-        navigate("/", { replace: true })
         return "Success"
       }
       return "Password is incorrect"

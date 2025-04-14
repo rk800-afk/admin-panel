@@ -5,17 +5,53 @@ import { LoginPage } from "../pages/login/login-page"
 import { RegisterPage } from "../pages/register/register-page"
 import { SettingsPage } from "../pages/settings/settings-page"
 import { ProfilePage } from "../pages/profile/profile-page"
-
+import { PrivateRoute } from "./private-route"
+import { RestrictedRoute } from "./restricted-route"
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <TodoPage /> },
-      { path: "/login", element: <LoginPage /> },
-      { path: "/register", element: <RegisterPage /> },
-      { path: "/settings", element: <SettingsPage /> },
-      { path: "/profile", element: <ProfilePage /> },
+      {
+        path: "/",
+        element: (
+          <PrivateRoute>
+            <TodoPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: (
+          <RestrictedRoute>
+            <LoginPage />
+          </RestrictedRoute>
+        ),
+      },
+      {
+        path: "/register",
+        element: (
+          <RestrictedRoute>
+            <RegisterPage />
+          </RestrictedRoute>
+        ),
+      },
+      {
+        path: "/settings",
+        element: (
+          <PrivateRoute>
+            <SettingsPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <ProfilePage />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ])
