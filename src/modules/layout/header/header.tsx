@@ -1,15 +1,10 @@
 import { Link } from "react-router-dom"
 import styles from "./header.module.css"
+import { useContext } from "react"
+import { AppStateContext } from "../../../context/app-state-conext"
 
-export function Header({
-  isLogined,
-  userEmail,
-  handleLogout,
-}: {
-  isLogined: boolean
-  userEmail: string
-  handleLogout: () => void
-}) {
+export function Header() {
+  const { isLogined, handleLogout, user } = useContext(AppStateContext)
   return (
     <header className={styles.headerContainer}>
       <nav className={styles.nav}>
@@ -31,7 +26,7 @@ export function Header({
         )}
       </nav>
       {isLogined && (
-        <p className={styles.greating}>Hello {userEmail}, have a good day!</p>
+        <p className={styles.greating}>Hello {user!.email}, have a good day!</p>
       )}
     </header>
   )

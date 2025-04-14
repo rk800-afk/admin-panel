@@ -5,6 +5,7 @@ import { Footer } from "./modules/layout/footer"
 import { PageLayout } from "./modules/layout/page-layout"
 import { useEffect, useState } from "react"
 import { User, USERS } from "./constants"
+import { AppStateProvider } from "./context/app-state-provider"
 
 function App() {
   const [todoTitle, setTodoTitle] = useState<string>("todo title")
@@ -106,28 +107,28 @@ function App() {
   }
 
   return (
-    <PageLayout>
-      <div>
-        <Header
-          isLogined={isLogined}
-          userEmail={user.email}
-          handleLogout={handleLogout}
-        />
-        <main>
-          <Outlet
-            context={{
-              user,
-              todoTitle,
-              footerText,
-              handleSettingsChange,
-              handleLogin,
-              handleRegister,
-            }}
-          />
-        </main>
-      </div>
-      <Footer footerText={footerText} />
-    </PageLayout>
+    <AppStateProvider
+      context={{
+        user,
+        footerText,
+        handleLogin,
+        handleLogout,
+        handleRegister,
+        handleSettingsChange,
+        isLogined,
+        todoTitle,
+      }}
+    >
+      <PageLayout>
+        <div>
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+        </div>
+        <Footer />
+      </PageLayout>
+    </AppStateProvider>
   )
 }
 

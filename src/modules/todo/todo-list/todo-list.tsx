@@ -1,16 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { TodoCard } from "./components/todo-card"
 import styles from "./todo-list.module.css"
 import { TodoCreateForm } from "./components/todo-create-form"
-import { User } from "../../../constants"
+import { AppStateContext } from "../../../context/app-state-conext"
 
-export function TodoList({
-  todoTitle,
-  user,
-}: {
-  todoTitle: string
-  user: User
-}) {
+export function TodoList() {
+  const { todoTitle, user } = useContext(AppStateContext)
+
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -102,7 +98,7 @@ export function TodoList({
 
   return (
     <>
-      {user.role === "admin" && <TodoCreateForm onSubmit={handleCreate} />}
+      {user!.role === "admin" && <TodoCreateForm onSubmit={handleCreate} />}
       <p className={styles.todoTitle}>{todoTitle}</p>
       <div className={styles.todoContainer}>
         {todos.map(({ id, title, description, isEditing, status }) => {
@@ -117,7 +113,7 @@ export function TodoList({
               isEditing={isEditing}
               status={status}
               title={title}
-              isViewer={user.role === "viewer"}
+              isViewer={user!.role === "viewer"}
             />
           )
         })}
